@@ -23,5 +23,5 @@ pip install e .
 
 Run the agent demo:
 ```bash
-python scripts/run_agent_demo.py
+python run_agent_demo.py
 ```
