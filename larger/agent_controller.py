@@ -93,7 +93,7 @@ model = sum_model()
 model.to(device)
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=0.0002)
-epochs = 50
+epochs = 100
 batch_size = 32
 train_data, test_data = train_test_split(data, test_size=0.2)
 def predict(model, sample):
