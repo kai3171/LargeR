@@ -172,18 +172,18 @@ def check_and_process_data(input_path, output_path):
 #############################################
 
 
-        # result = Feature_Recognition(data)
-        # finish = False
-        # while finish == False:
-        #     print(result['explain'])
-        #     print('Sujested feature: ', {'RNA': result['RNA'], 'region': result['region'], 'ligand': result['ligand']}, 'Sujested label: ', '"', result['label'], '"')
-        #     asking = "\n[Need adjust?(tape 'finish' to end)] → "
-        #     user_input = input(asking).strip()
-        #     if user_input == 'finish':
-        #         finish = True
-        #     else:
-        #         result = Feature_adaption(data, result, user_input)
-        #         print(result['explain'])
+        result = Feature_Recognition(data)
+        finish = False
+        while finish == False:
+            print(result['explain'])
+            print('Sujested feature: ', {'RNA': result['RNA'], 'region': result['region'], 'ligand': result['ligand']}, 'Sujested label: ', '"', result['label'], '"')
+            asking = "\n[Need adjust?(tape 'finish' to end)] → "
+            user_input = input(asking).strip()
+            if user_input == 'finish':
+                finish = True
+            else:
+                result = Feature_adaption(data, result, user_input)
+                print(result['explain'])
         
 
 ##################################################################
@@ -205,12 +205,12 @@ def check_and_process_data(input_path, output_path):
         #         processed_columns.append(new_feature_name)
         #         data = column_process(one_feature, data, new_feature_name)
 
-        result = {}
-        result['RNA'] = 'rna_sequence'
-        result['region'] = 'region_mask'
-        result['ligand'] = 'smile'
-        result['label'] = 'label'
-        result['explain'] = 'nothing'
+        # result = {}
+        # result['RNA'] = 'rna_sequence'
+        # result['region'] = 'region_mask'
+        # result['ligand'] = 'smile'
+        # result['label'] = 'label'
+        # result['explain'] = 'nothing'
 
 
         
