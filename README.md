@@ -18,3 +18,10 @@ cd LargeR
 pip install -r requirements.txt
 pip install e .
 ```
+
+## Usage
+
+Run the agent demo:
+```bash
+python scripts/run_agent_demo.py
+```
