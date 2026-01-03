@@ -10,8 +10,8 @@ LargeR provides an interactive, natural language-based pipeline that enables reg
 ```bash
 conda create -n LargeR python=3.9
 conda activate LargeR
-git clone https://github.com/Liuzhe30/RLAgent
-cd RLAgent
+git clone git@github.com:kai3171/LargeR.git
+cd LargeR
 ```
 2. Install required Python packages:
 ```bash
