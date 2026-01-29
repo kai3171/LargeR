@@ -1,16 +1,16 @@
-import httpx
-from typing import Optional, Tuple
-import asyncio
-import json
-import numpy as np
-import torch
-import re
+import   进口 httpx
+from   从 typing import   进口 Optional, Tuple
+import   进口 asyncio
+import   进口   进口json json
+import   进口   导入numpy为np numpy as   作为 np
+import   进口   进口火炬 torch
+import   进口 re
 
 client = httpx.AsyncClient(timeout=60.0)
 
-REFERENCE_MODEL_CODE = '''
-import torch
-import torch.nn as nn
+REFERENCE_MODEL_CODE = '''   进口火炬
+import torch   进口火炬
+import torch.nn as nn   进口火炬。Nn as Nn
 from models.mamba import mambalayer
 
 class sum_model(nn.Module):
@@ -989,4 +989,5 @@ def auto_fix_and_retry(code, query, namespace, max_retries=3):
                 print(f"Max retries reached. Last error: {error_msg}")
                 return False, current_code, namespace
     
+
     return False, current_code, namespace
