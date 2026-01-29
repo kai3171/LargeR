@@ -1,7 +1,7 @@
-import torch
-import torch.nn as nn
-import torch.nn.functional as F
-from llm_tools_new import (
+import   进口   进口火炬 torch
+import   进口   进口火炬。Nn as   作为 Nn torch.nn as   作为 nn
+import进口火炬。n.   进口功能为F torch.nn.functional as   作为 F
+from从llm_tools_new    从llm_tools_new import   进口 (
     ask_llm_stage, 
     deeplearning_build, 
     result_code_generation, 
@@ -11,29 +11,29 @@ from llm_tools_new import (
     check_and_fix_model_code,
     auto_fix_and_retry
 )
-from data_utils_new import check_and_process_data
-import pandas as pd
-import numpy as np
-import os
-import matplotlib
-matplotlib.use('Agg') 
-import matplotlib.pyplot as plt
-from sklearn.metrics import roc_curve, auc, confusion_matrix, classification_report, roc_auc_score, accuracy_score
+from从data_utils_new导入check_and_process_data data_utils_new    从import check_and_process_data
+import   进口   以pd方式导入熊猫 pandas as   作为 pd
+import   进口   导入numpy为np numpy as   作为 np
+import   进口   进口的 os
+import   进口   进口matplotlib matplotlib
+matplotlib.   使用matplotlib。   使用(’Agg’)use   使用('Agg'   ’Agg’) 
+import进口matplotlib。Pyplot为PLT matplotlib.   进口pyplot as   作为 plt
+from从sklearn。指标导入roc_curve， auc, confusion_matrix, classification_report, roc_auc_score, accuracy_score sklearn.   从metrics import   进口 roc_curve, auc, confusion_matrix, classification_report, roc_auc_score, accuracy_score
 
-def predict(model, sample, features):
-    input_tensors = []
-    for feature in features:
-        input_tensors.append(torch.from_numpy(sample[feature]))
-    return model(*input_tensors)
+defDef predict（模型，样本，特征）： predict   预测   预测(model, sample, features):
+    input_tensors =    Input_tensors = [][]
+       对于features中的feature：for feature in   在 features:
+        input_tensors.input_tensors   附加.append   附加 (torch.from_numpy(示例[功能]))append      附加附加(torch.from_numpy(sample[feature]))
+    回归模型(* input_tensors)return model   模型(*input_tensors)
 
-def evaluate_result(model, dataset, features):
+defDef evaluate_result（模型，数据集，特征）： evaluate_result(model, dataset, features):
     model.eval()
-    scores = []
-    predictions = []
-    labels = []
-    device = next(model.parameters()).device
+    scores =    分数= [][]
+    predictions =    预测= [][]
+    labels =    标签= [][]
+    device = Device = next(model.parameters()).devicenext(model.parameters()).device
     
-    with torch.no_grad():
+       与torch.no_grad ():with torch.no_grad():
         for idx in range(len(dataset)):
             row = dataset.iloc[idx]
             
@@ -368,4 +368,5 @@ Available commands:
             traceback.print_exc()
             print(f"\nModel code saved at: {self.model_code_path}")
             print("You can manually edit this file to fix issues, then restart and select 'yes' to use the saved code.")
+
             return
