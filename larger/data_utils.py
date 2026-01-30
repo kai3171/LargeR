@@ -1,5 +1,5 @@
-import   进口   以pd方式导入熊猫 pandas as   作为 pd
-from从llm_tools_new    从llm_tools_new import   进口 (
+import pandas as pd
+from llm_tools_new import (
     init_column_process, 
     judge_user_satisfied, 
     process_absolute_exec, 
@@ -7,19 +7,19 @@ from从llm_tools_new    从llm_tools_new import   进口 (
     Feature_Recognition, 
     Feature_adaption
 )
-import   进口   进口火炬 torch
-import   进口 fm
-import   进口 json
-import   进口   导入numpy为np numpy as   作为 np
-from   从   从rdkit导入化学 rdkit import   进口 Chem
-from   从 scipy import   进口 sparse
-import   进口   进口的 os
-from   从 larger.preset_method import   进口 process_RNA, get_fingerprint
+import torch
+import fm
+import json
+import numpy as np
+from rdkit import Chem
+from scipy import sparse
+import os
+from larger.preset_method import process_RNA, get_fingerprint
 
 def process_rna_sequence(seq, model, batch_converter, device):
     batch_labels, batch_strs, batch_tokens = batch_converter([('hello', seq)])
     batch_tokens = batch_tokens.to(device)
-    results = model   模型(batch_tokens, repr_layers=[12])
+    results = model(batch_tokens, repr_layers=[12])
     return results["representations"][12].tolist()[0]
 
 def build_rna_feature(row, rna_col, region_col, model, batch_converter, device):
@@ -27,13 +27,13 @@ def build_rna_feature(row, rna_col, region_col, model, batch_converter, device):
     region_mask = row[region_col]
     output = process_rna_sequence(rna_seq, model, batch_converter, device)
     region_mask = [0] + list(region_mask) + [0]
-    enriched_output = [emb + [region_mask[i]] for   为 i, emb in   在 enumerate(output)]
+    enriched_output = [emb + [region_mask[i]] for i, emb in enumerate(output)]
     return enriched_output
 
-defdef split_smiles(smiles, kekuleSmiles=True)： split_smiles(smiles, kekuleSmiles=True):
+def split_smiles(smiles, kekuleSmiles=True):
     try:
-        mol = Chem.mol =化学。MolFromSmiles(微笑)MolFromSmiles(smiles)
-        smiles = Chem.微笑=化学。MolToSmiles(摩尔kekuleSmiles = kekuleSmiles)MolToSmiles(mol, kekuleSmiles=kekuleSmiles)
+        mol = Chem.MolFromSmiles(smiles)
+        smiles = Chem.MolToSmiles(mol, kekuleSmiles=kekuleSmiles)
     except:
         pass
     splitted_smiles = []
@@ -182,5 +182,4 @@ def column_process(column, data, new_column_name):
             print("Adjusting the processing plan...")
             plan = column_process_adjust(data[column], code, description, new_column_name)
                
-
     return data
